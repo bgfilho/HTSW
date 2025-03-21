@@ -28,7 +28,7 @@ Se o WinFsp não aparecer na lista, reinstale e adicione ao `PATH`:
 2. Vá para **Avançado** → clique em **Variáveis de Ambiente**.
 3. Em **Variáveis do Sistema**, edite **Path** e adicione:
    ```
-   C:\Program Files (x86)\WinFspin
+   C:\Program Files (x86)\WinFsp in
    ```
 
 ---
@@ -39,12 +39,12 @@ Para configurar o OneDrive:
 ```cmd
 rclone config
 ```
-1. Escolha **"New remote"** e dê um nome (ex: `ONEDRIVE-BG`).
+1. Escolha **"New remote"** e dê um nome (ex: `ONEDRIVE-EXEMPLO`).
 2. Escolha **OneDrive** como tipo de armazenamento.
 3. Autentique com sua conta Microsoft.
 4. Teste a conexão com:
    ```cmd
-   rclone lsd ONEDRIVE-BG:
+   rclone lsd ONEDRIVE-EXEMPLO:
    ```
 
 Se listar pastas, está funcionando corretamente.
@@ -55,7 +55,7 @@ Se listar pastas, está funcionando corretamente.
 
 Para montar o OneDrive como unidade `Z:`, execute:
 ```cmd
-rclone mount ONEDRIVE-BG: Z: --vfs-cache-mode writes --allow-other --network-mode
+rclone mount ONEDRIVE-EXEMPLO: Z: --vfs-cache-mode writes --allow-other --network-mode
 ```
 - **`--vfs-cache-mode writes`** → Melhora desempenho e permite salvar arquivos grandes.
 - **`--allow-other`** → Permite acesso por outros usuários.
@@ -63,7 +63,7 @@ rclone mount ONEDRIVE-BG: Z: --vfs-cache-mode writes --allow-other --network-mod
 
 Para rodar em segundo plano (daemon):
 ```cmd
-rclone mount ONEDRIVE-BG: Z: --vfs-cache-mode writes --allow-other --network-mode --daemon
+rclone mount ONEDRIVE-EXEMPLO: Z: --vfs-cache-mode writes --allow-other --network-mode --daemon
 ```
 
 Se precisar desmontar:
@@ -80,7 +80,7 @@ rclone rc mount/unmount mountPoint="Z:"
 1. Abra o Bloco de Notas e copie este código:
 ```cmd
 @echo off
-rclone mount ONEDRIVE-BG: Z: --vfs-cache-mode writes --allow-other --network-mode --daemon
+rclone mount ONEDRIVE-EXEMPLO: Z: --vfs-cache-mode writes --allow-other --network-mode --daemon
 ```
 
 2. Salve como `C:
@@ -126,7 +126,7 @@ Se quiser rodar o **Rclone Web GUI** como daemon junto com a montagem do OneDriv
 @echo off
 rclone rcd --rc-web-gui --rc-user=admin --rc-pass=senha --rc-addr=localhost:5572 --rc-no-auth --daemon
 timeout /t 5
-rclone mount ONEDRIVE-BG: Z: --vfs-cache-mode writes --allow-other --network-mode --daemon
+rclone mount ONEDRIVE-EXEMPLO: Z: --vfs-cache-mode writes --allow-other --network-mode --daemon
 ```
 2. Salve como `C:
 clone\mount_onedrive_gui.bat`.
